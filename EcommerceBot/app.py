@@ -39,8 +39,8 @@ with st.sidebar:
     st.markdown("*An AI-powered fashion assistant that uses Retrieval-Augmented Generation (RAG) " \
     "to instantly match your personal style and budget with curated boutique recommendations*.")
     st.divider()
-    st.success("⚡ Powered by Groq (Llama 3 8B)")
-    st.success("🟢 Pinecone: Connected")
+    st.success("Powered by Groq (Llama 3 8B)")
+    st.success("Pinecone: Connected")
 
 # --- 3. CHAT INTERFACE ---
 st.title("Veridian Fashion Assistant")
@@ -143,4 +143,5 @@ if user_input:
             st.error(f"Inference Error: {e}")
 
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+
 
