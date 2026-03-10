@@ -8,7 +8,7 @@ from groq import Groq
 
 # --- 1. INITIAL SETUP ---
 st.set_page_config(page_title="Veridian | AI Fashion Assistant", page_icon="🛍️", layout="wide")
-load_dotenv()
+my_key = st.secrets["API_KEY"]
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
@@ -141,5 +141,6 @@ if user_input:
             
         except Exception as e:
             st.error(f"Inference Error: {e}")
+
 
     st.session_state.messages.append({"role": "assistant", "content": full_response})
