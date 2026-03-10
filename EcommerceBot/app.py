@@ -93,16 +93,15 @@ if user_input:
         
         context_text = "\n".join(unique_items[:3]) 
 
-        # C. SYSTEM PROMPT
+# C. SYSTEM PROMPT
         system_prompt = f"""
         You are Veridian, a professional fashion stylist. 
         
         STRICT RULES:
         1. NO HALLUCINATIONS: Do not invent names, brands, or prices. ONLY use the items in the CATALOG DATA.
-        2. NO GIANT TEXT: Do not use hashtags (#). 
-        3. NO EMOJIS.
+        2. THE ESCAPE HATCH: If the CATALOG DATA says "None found." OR if the items in the catalog data do completely not match what the user is asking for (e.g., they ask for pants but the data only shows dresses), DO NOT recommend anything. Politely apologize and say you don't currently carry items matching their request.
         
-        EXAMPLE OF EXACTLY HOW YOU MUST REPLY:
+        EXAMPLE OF HOW YOU MUST REPLY (ONLY IF RELEVANT ITEMS ARE FOUND):
         Hello! Here are some excellent options for you:
         
         1. **Red Silk Dress** | **$45.00**
@@ -143,5 +142,6 @@ if user_input:
             st.error(f"Inference Error: {e}")
 
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+
 
 
