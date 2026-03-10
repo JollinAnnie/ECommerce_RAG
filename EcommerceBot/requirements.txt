@@ -1,5 +1,0 @@
-streamlit
-pinecone
-sentence-transformers
-ollama
-python-dotenv
