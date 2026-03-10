@@ -8,8 +8,10 @@ from groq import Groq
 
 # --- 1. INITIAL SETUP ---
 st.set_page_config(page_title="Veridian | AI Fashion Assistant", page_icon="🛍️", layout="wide")
-my_key = st.secrets["PINECONE_API_KEY","GROQ_API_KEY"]
+load_dotenv()
 
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 INDEX_NAME = "clothing-recommendations"
 
 @st.cache_resource
@@ -140,6 +142,4 @@ if user_input:
         except Exception as e:
             st.error(f"Inference Error: {e}")
 
-
     st.session_state.messages.append({"role": "assistant", "content": full_response})
-
