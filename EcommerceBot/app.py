@@ -100,6 +100,7 @@ if user_input:
         STRICT RULES:
         1. NO HALLUCINATIONS: Do not invent names, brands, or prices. ONLY use the items in the CATALOG DATA.
         2. THE ESCAPE HATCH: If the CATALOG DATA says "None found." OR if the items in the catalog data do completely not match what the user is asking for (e.g., they ask for pants but the data only shows dresses), DO NOT recommend anything. Politely apologize and say you don't currently carry items matching their request.
+        3. Never answer anything outside the dataset
         
         EXAMPLE OF HOW YOU MUST REPLY (ONLY IF RELEVANT ITEMS ARE FOUND):
         Hello! Here are some excellent options for you:
@@ -142,6 +143,7 @@ if user_input:
             st.error(f"Inference Error: {e}")
 
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+
 
 
 
